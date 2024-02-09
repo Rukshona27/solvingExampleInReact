@@ -19,7 +19,7 @@ function App() {
 		<ul>
 			{result}
 		</ul>
-    <input value={value} onChange={(event)=>{}}/>
+    <input value={value} onChange={(event)=>{setValue(event.target.value)}}/>
     <button onClick={()=> {addElem(value)}}>add</button>
 	</div>;
 }
