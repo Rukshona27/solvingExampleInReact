@@ -1,13 +1,10 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
+import Header from './components/Header';
 
 function App() {
-  
-
-	return <div>
-		some
-	</div>;
+  return <Header/>
 }
 
 export default App;
