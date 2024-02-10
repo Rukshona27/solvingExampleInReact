@@ -7,67 +7,89 @@ function App() {
   const initNotes = [
     {
       id: 'GYi9G_uC4gBF1e2SixDvu',
-      prop1: 'value11',
-      prop2: 'value12',
-      prop3: 'value13',
+      name: '2-СЛОЙНЫЙ ГОФРОКАРТОН',
+      price: 'от 12,5 руб/м2',
     },
     {
       id: 'IWSpfBPSV3SXgRF87uO74',
-      prop1: 'value21',
-      prop2: 'value22',
-      prop3: 'value23',
+      name: '3-СЛОЙНЫЙ ГОФРОКАРТОН БУРЫЙ',
+      price: 'от 12,5 руб/м2',
     },
     {
       id: 'JAmjRlfQT8rLTm5tG2m1L',
-      prop1: 'value31',
-      prop2: 'value32',
-      prop3: 'value33',
+      name: '3-СЛОЙНЫЙ ГОФРОКАРТОН',
+      price: 'от 12,5 руб/м2',
     },
+    {
+      id: 'JAmjRlfQT8rLTm5tG2m2l',
+      name: '5-СЛОЙНЫЙ ГОФРОКАРТОН',
+      price: 'от 12,5 руб/м2',
+    }
   ];
-	const [notes, setNotes] = useState(initNotes);
-  const [value, setValue] = useState('');
-  const [value1, setValue1] = useState('');
-  const [value2, setValue2] = useState('');
+  const navHeader = ['ПРОДУКЦИЯ', 'НАШЕ ПРОИЗВОДСТВО', 'УСЛУГИ', 'ДОСТАВКА', 'КОНТАКТЫ'];
+  //const navHeader2 = ['Гофрокартон и упаковка оптом', 'Московская область, Раменский р-н, Бронницы, с. Михеево', '']
+  const [notes, setNotes] = useState(initNotes);
+  const [navEl, setNav] = useState(navHeader);
+
 	
-	const result = notes.map(note => {
-		return <li key={note.id}>
-			<span>{note.prop1}</span>
-			<span>{note.prop2}</span>
-			<span>{note.prop3}</span>
+  const header = navEl.map((nav, index) =>{
+    return <a href='#'><li className='colorWhite' key={index}>{nav}</li></a>
+  })
+
+  const result = notes.map(note => {
+		return <li className='Li' key={note.id}>
+			<span>{note.name}</span>
+			<span>{note.price}</span>
+			
+			<button onClick={() => doSmth(note.id)}>
+				btn
+			</button>
 		</li>;
 	});
-	function addEl(){
-    const copy = Object.assign([], notes);
-    copy.push({
-      id:"idPush",
-      prop1: 'pushProp1',
-      prop2: 'pushProp2',
-      prop3:'pushProp3',
-    });
-    setNotes(copy);
-  }
-  function addLi(val1, val2,val3){
-    const copy = Object.assign([], notes);
-    copy.push({
-      id: 'idLi',
-      val: {val1},
-      val2: {val2},
-      val3: {val3},
-    });
-    alert(val1, val2, val3)
-    setNotes(copy);
-  }
 
-	return <div>
-		<ul>
-			{result}
-		</ul>
-    <input  value={value} onChange={(event)=>{setValue(event.target.value)}}/>
-    <input  value={value1} onChange={(event)=>{setValue1(event.target.value)}}/>
-    <input  value={value2} onChange={(event)=>{setValue2(event.target.value)}}/>
-    <button onClick={()=>{addLi(value, value1, value2)}}>add</button>
-	</div>;
+  function doSmth(id) {
+		setNotes(notes.map(note => {
+			if (note.id === id) {
+				note.prop1 += '!';
+				note.prop2 += '!';
+				note.prop3 += '!';
+				
+				return note;
+			}
+			
+			return note;
+		}));
+	}
+  return <>
+  <section className='justFlex secNav1'>
+    <aside className='logoText'>
+      <img src='../public/logo.png' alt='logo'/>
+      <p>Гофрокартон и упаковка оптом</p>
+    </aside>
+    <aside className='address justFlex'>
+      <span class="material-symbols-outlined  locationOnIcon colorOrange">location_on</span>
+      <p>Московская область, Раменский р-н, <br/> Бронницы, с. Михеево</p>
+    </aside>
+    <aside className='contacts'>
+      <p>+7 (495) 545-47-88</p>
+      <div className='justFlex'><span class="material-symbols-outlined colorOrange scheduleIcon">schedule</span> <p>Пн-пт: 9:00 – 18:00</p></div>
+    </aside>
+    <aside className='feedBack'></aside>
+  </section>
+  <div className='nav'>
+    <ul>
+      {header}
+    </ul>
+  </div>
+  <div>
+  <ul className='Ul justFlex'>
+    {result}
+  </ul>
+</div>
+</>
+
 }
+
 
 export default App;
 
