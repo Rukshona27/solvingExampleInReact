@@ -36,25 +36,15 @@ function App() {
 			<span>{note.prop3}</span>
 		</li>;
 	});
-	function addEl(){
-    const copy = Object.assign([], notes);
-    copy.push({
-      id:"idPush",
-      prop1: 'pushProp1',
-      prop2: 'pushProp2',
-      prop3:'pushProp3',
-    });
-    setNotes(copy);
-  }
+
   function addLi(val1, val2,val3){
     const copy = Object.assign([], notes);
     copy.push({
       id: 'idLi',
-      val: {val1},
-      val2: {val2},
-      val3: {val3},
+      val: val1,
+      val2:val2,
+      val3:val3,
     });
-    alert(val1, val2, val3)
     setNotes(copy);
   }
 
