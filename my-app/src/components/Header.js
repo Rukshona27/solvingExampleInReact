@@ -6,6 +6,6 @@ function Header(){
         return <a href="#1"><li key={ind}>{el}</li></a>
     })
 
-    return <ul>{nav}</ul>;
+    return <ul className="navUl">{nav}</ul>;
 }
 export default Header;
